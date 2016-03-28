@@ -1,0 +1,9 @@
+﻿PCのスペック
+
+processor: Intel(R)Core(TM)i7-3612QM CPU @ 2.10GHz
+
+RAM: 8.00GB
+
+SSD: 126GB
+
+OS: Windows 10 Home (64bit)
