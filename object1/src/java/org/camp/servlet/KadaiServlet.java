@@ -16,23 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jumpei
  */
-public class Kadai3Servlet extends HttpServlet {
-    
-    public class raamen{
-        public String suupu = "";
-        public String ajinokosa= "";
-        public void setRaamen(String Suupu,String Ajinokosa){
-            suupu = Suupu;
-            ajinokosa = Ajinokosa;
-        }
-        public void showSuupu(PrintWriter out){
-            out.print(suupu+"<br>");
-        }
-        public void showAjinokosa(PrintWriter out){
-            out.print(ajinokosa+"<br>");
-        }
-    }  
-
+public class KadaiServlet extends HttpServlet {    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,7 +31,7 @@ public class Kadai3Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        raamen shouyu = new raamen();
+        RaamenClass shouyu = new RaamenClass();
         shouyu.setRaamen("醤油","濃いめ");
         shouyu.showSuupu(out);
         shouyu.showAjinokosa(out);
@@ -56,12 +40,18 @@ public class Kadai3Servlet extends HttpServlet {
         shouyu.showSuupu(out);
         shouyu.showAjinokosa(out);
         
+        taberu donburi =  new taberu();
+        donburi.gotisousama();
+        shouyu.showSuupu(out);
+        shouyu.showAjinokosa(out);
+        
+        
         try {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>オブジェクト指向の課題３</title>");            
+            out.println("<title>オブジェク指向１の課題４</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("</body>");
