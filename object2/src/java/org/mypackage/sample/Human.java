@@ -81,19 +81,19 @@ class Dealer extends Human {
     }
 
     public Integer open(PrintWriter out) {
-        out.print("ディーラーのポイント"+goukei+"<br>");
+        out.print("ディーラーのポイント" + goukei + "<br>");
         myCards.clear();
         return goukei;
     }
-    
+
     public void setCard(ArrayList<Integer> DsetCard, PrintWriter out) {
         for (int i = 0; i < DsetCard.size(); i++) {
             myCards.add(DsetCard.get(i));
         }
-        
-        out.print("ディーラーのカード"+"("+ T++ +"ターン目)"+"<br>");
+
+        out.print("ディーラーのカード" + "(" + T++ + "ターン目)" + "<br>");
         for (int i = 0; i < myCards.size(); i++) {
-            out.print("カードの"+myCards.get(i)+"<br>");
+            out.print("カードの" + myCards.get(i) + "<br>");
         }
     }
 
@@ -142,9 +142,9 @@ class User extends Human {
         for (int i = 0; i < UsetCard.size(); i++) {
             myCards.add(UsetCard.get(i));
         }
-        out.print("ユーザーのカード"+"("+ T++ +"ターン目)"+"<br>");
+        out.print("ユーザーのカード" + "(" + T++ + "ターン目)" + "<br>");
         for (int i = 0; i < myCards.size(); i++) {
-            out.print("カードの"+myCards.get(i)+"<br>");
+            out.print("カードの" + myCards.get(i) + "<br>");
         }
     }
 

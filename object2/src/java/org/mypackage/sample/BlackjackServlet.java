@@ -56,7 +56,7 @@ public class BlackjackServlet extends HttpServlet {
             BcheckSum = D.checkSum();
         }
         int d = D.open(out);
-        
+
         out.print("<br>");
 
         if (u > 21 && d > 21 || u == d) {
@@ -69,7 +69,7 @@ public class BlackjackServlet extends HttpServlet {
             }
         } else if (u > d) {
             out.print("ユーザーの勝ちです");
-        }else{
+        } else {
             out.print("ディーラーの勝ちです");
         }
 
