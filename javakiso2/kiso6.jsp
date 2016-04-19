@@ -3,7 +3,7 @@
 
 int atai = 1000;
 
-while(atai > 100){
+while(atai < 100){
 	atai = atai/2;
 }
 out.print(atai);
