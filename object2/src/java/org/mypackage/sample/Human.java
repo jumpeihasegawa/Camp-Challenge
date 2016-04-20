@@ -59,14 +59,17 @@ class Dealer extends Human {
         }
     }
 
-    public ArrayList<Integer> deal() {
+    public ArrayList<Integer> deal(PrintWriter out) {
         Ldeal.clear();
         Random r = new Random();
         for (int i = 1; i <= 2; i++) {
-            Integer R = r.nextInt(Cards.size());
+            int R = r.nextInt(Cards.size());
             Ldeal.add(Cards.get(R));
+            Cards.remove(R);
+            out.print(" "+R+":");
+            out.print(Cards.size());
         }
-
+        
         return Ldeal;
     }
 
@@ -74,8 +77,9 @@ class Dealer extends Human {
         Random r = new Random();
         Lhit.clear();
         if (BcheckSum == true) {
-            Integer R = r.nextInt(Cards.size());
+            int R = r.nextInt(Cards.size());
             Lhit.add(Cards.get(R));
+            Cards.remove(R);
         }
         return Lhit;
     }
@@ -135,6 +139,7 @@ class User extends Human {
 
     public Integer open(PrintWriter out) {
         out.print("ユーザーのポイント" + goukei);
+        myCards.clear();
         return goukei;
     }
 
