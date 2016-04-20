@@ -66,8 +66,6 @@ class Dealer extends Human {
             int R = r.nextInt(Cards.size());
             Ldeal.add(Cards.get(R));
             Cards.remove(R);
-            out.print(" "+R+":");
-            out.print(Cards.size());
         }
         
         return Ldeal;
