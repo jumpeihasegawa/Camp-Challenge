@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Jumpei
  */
 public class BlackjackServlet extends HttpServlet {
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,7 +39,7 @@ public class BlackjackServlet extends HttpServlet {
         User U = new User();
         U.setCard(Udeal, out);
         boolean UcheckSum = U.checkSum();
-        int ut =1;
+        int ut = 1;
         while (UcheckSum == true) {
             ArrayList<Integer> Uhit = D.hit(UcheckSum);
             U.setCard(Uhit, out);
@@ -62,14 +62,16 @@ public class BlackjackServlet extends HttpServlet {
         int d = D.open(out);
 
         out.print("<br>");
-        
-        if(u==21&&d==21){
-            if(ut < dt){
+
+        if (u == 21 && d == 21) {
+            if (ut < dt) {
                 out.print("ユーザーの勝ちです");
-            }else{
+            } else if (ut > dt) {
                 out.print("ディーラーの勝ちです");
+            } else if (ut == dt) {
+                out.print("引き分けです");
             }
-        }else if (u > 21 && d > 21 || u == d) {
+        } else if (u > 21 && d > 21 || u == d) {
             out.print("引き分けです");
         } else if (u > 21 || d > 21) {
             if (u > d) {
@@ -82,6 +84,7 @@ public class BlackjackServlet extends HttpServlet {
         } else {
             out.print("ディーラーの勝ちです");
         }
+
         try {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -97,7 +100,7 @@ public class BlackjackServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
