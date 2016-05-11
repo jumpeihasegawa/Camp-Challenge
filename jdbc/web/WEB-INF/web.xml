@@ -28,6 +28,26 @@
         <servlet-name>Kadai7Servlet</servlet-name>
         <servlet-class>org.camp.sample.Kadai7Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Kadai8Servlet</servlet-name>
+        <servlet-class>org.camp.sample.Kadai8Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Kadai9Servlet</servlet-name>
+        <servlet-class>org.camp.sample.Kadai9Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Kadai10Servlet</servlet-name>
+        <servlet-class>org.camp.sample.Kadai10Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Kadai11Servlet</servlet-name>
+        <servlet-class>org.camp.sample.Kadai11Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Kadai12Servlet</servlet-name>
+        <servlet-class>org.camp.sample.Kadai12Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Kadai1Servlet</servlet-name>
         <url-pattern>/Kadai1Servlet</url-pattern>
@@ -55,6 +75,26 @@
     <servlet-mapping>
         <servlet-name>Kadai7Servlet</servlet-name>
         <url-pattern>/Kadai7Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Kadai8Servlet</servlet-name>
+        <url-pattern>/Kadai8Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Kadai9Servlet</servlet-name>
+        <url-pattern>/Kadai9Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Kadai10Servlet</servlet-name>
+        <url-pattern>/Kadai10Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Kadai11Servlet</servlet-name>
+        <url-pattern>/Kadai11Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Kadai12Servlet</servlet-name>
+        <url-pattern>/Kadai12Servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

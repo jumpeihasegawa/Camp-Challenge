@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%
+            String SQL = "SELECT * FROM profiles where";
+            String And = " " + "and" + " ";
+            out.print(SQL+And+"A");
+        %>
     </body>
 </html>
