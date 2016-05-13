@@ -14,7 +14,16 @@
         <title>JUMS登録確認画面</title>
     </head>
     <body>
-        <% if (!hs.getAttribute("name").equals("")) {%>
+
+        <!--3. insertconfirmにて、フォームの内容が未入力であっても通過してしまう場合がある。これを通過させないようにし、かつどの項目が不完全なのかをわかるようにしなさい-->
+        <% if (!hs.getAttribute("name").equals("")
+                    //不完全な項目は、生年月日と電話番号と自己紹介がフォームの条件に入いなかった為、これの条件を追加した、
+                    && !hs.getAttribute("year").equals("")
+                    && !hs.getAttribute("month").equals("")
+                    && !hs.getAttribute("day").equals("")
+                    && !hs.getAttribute("tell").equals("")
+                    && !hs.getAttribute("comment").equals("")) {%>
+
         <h1>登録確認</h1>
         名前:<%= hs.getAttribute("name")%><br>
         生年月日:<%= hs.getAttribute("year") + "年" + hs.getAttribute("month") + "月" + hs.getAttribute("day") + "日"%><br>

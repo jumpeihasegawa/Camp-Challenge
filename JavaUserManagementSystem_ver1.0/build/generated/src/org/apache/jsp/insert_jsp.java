@@ -44,7 +44,9 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
+      out.write("\n");
       out.write("<!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->\n");
+      out.write("\n");
       out.write("\n");
 
     HttpSession hs = request.getSession();
@@ -68,7 +70,7 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <option value=\"\">----</option>\n");
       out.write("                ");
 
-                for (int i = 1950; i <= 2010; i++) {
+                    for (int i = 1950; i <= 2010; i++) {
       out.write("\n");
       out.write("                <option value=\"");
       out.print(i);
@@ -83,7 +85,7 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <option value=\"\">--</option>\n");
       out.write("                ");
 
-                for (int i = 1; i <= 12; i++) {
+                    for (int i = 1; i <= 12; i++) {
       out.write("\n");
       out.write("                <option value=\"");
       out.print(i);
@@ -99,7 +101,7 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <option value=\"\">--</option>\n");
       out.write("                ");
 
-                for (int i = 1; i <= 31; i++) {
+                    for (int i = 1; i <= 31; i++) {
       out.write("\n");
       out.write("                <option value=\"");
       out.print(i);
@@ -115,8 +117,10 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            種別:\n");
       out.write("            <br>\n");
+      out.write("\n");
       out.write("            <!--value=\"1\"　checkedの間が全角のスペースになっており、半角スペースに変更した-->\n");
       out.write("            <input type=\"radio\" name=\"type\" value=\"1\" checked>エンジニア<br>\n");
+      out.write("\n");
       out.write("            <input type=\"radio\" name=\"type\" value=\"2\">営業<br>\n");
       out.write("            <input type=\"radio\" name=\"type\" value=\"3\">その他<br>\n");
       out.write("            <br>\n");
@@ -135,9 +139,11 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <input type=\"submit\" name=\"btnSubmit\" value=\"確認画面へ\">\n");
       out.write("        </form>\n");
       out.write("        <br>\n");
+      out.write("\n");
       out.write("        <!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->\n");
       out.write("        ");
       out.print(JumsHelper.getInstance().home());
+      out.write("\n");
       out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
