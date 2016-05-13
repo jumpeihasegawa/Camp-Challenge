@@ -115,7 +115,8 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            種別:\n");
       out.write("            <br>\n");
-      out.write("            <input type=\"radio\" name=\"type\" value=\"1\"　checked>エンジニア<br>\n");
+      out.write("            <!--value=\"1\"　checkedの間が全角のスペースになっており、半角スペースに変更した-->\n");
+      out.write("            <input type=\"radio\" name=\"type\" value=\"1\" checked>エンジニア<br>\n");
       out.write("            <input type=\"radio\" name=\"type\" value=\"2\">営業<br>\n");
       out.write("            <input type=\"radio\" name=\"type\" value=\"3\">その他<br>\n");
       out.write("            <br>\n");

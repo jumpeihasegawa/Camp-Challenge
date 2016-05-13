@@ -1,6 +1,8 @@
 <%@page import="javax.servlet.http.HttpSession" %>
+
 <!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->
 <%@page import="jums.JumsHelper" %>
+
 <%
     HttpSession hs = request.getSession();
 %>
@@ -21,21 +23,21 @@
             <select name="year">
                 <option value="">----</option>
                 <%
-                for (int i = 1950; i <= 2010; i++) {%>
+                    for (int i = 1950; i <= 2010; i++) {%>
                 <option value="<%=i%>"> <%=i%> </option>
                 <% } %>
             </select>年
             <select name="month">
                 <option value="">--</option>
                 <%
-                for (int i = 1; i <= 12; i++) {%>
+                    for (int i = 1; i <= 12; i++) {%>
                 <option value="<%=i%>"><%=i%></option>
                 <% } %>
             </select>月
             <select name="day">
                 <option value="">--</option>
                 <%
-                for (int i = 1; i <= 31; i++) {%>
+                    for (int i = 1; i <= 31; i++) {%>
                 <option value="<%=i%>"><%=i%></option>
                 <% }%>
             </select>日
@@ -43,8 +45,10 @@
 
             種別:
             <br>
+
             <!--value="1"　checkedの間が全角のスペースになっており、半角スペースに変更した-->
             <input type="radio" name="type" value="1" checked>エンジニア<br>
+
             <input type="radio" name="type" value="2">営業<br>
             <input type="radio" name="type" value="3">その他<br>
             <br>
@@ -61,7 +65,9 @@
             <input type="submit" name="btnSubmit" value="確認画面へ">
         </form>
         <br>
+
         <!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->
         <%=JumsHelper.getInstance().home()%>
+
     </body>
 </html>
