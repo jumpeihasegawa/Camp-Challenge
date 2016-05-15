@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * insertresultと対応するサーブレット
- * フォームから入力された値をセッション経由で受け取り、データベースにinsertする
+ * insertresultと対応するサーブレット フォームから入力された値をセッション経由で受け取り、データベースにinsertする
  * 直接アクセスした場合はerror.jspに振り分け
+ *
  * @author hayashi-s
  */
 public class InsertResult extends HttpServlet {
@@ -28,25 +28,32 @@ public class InsertResult extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //セッションスタート
         HttpSession session = request.getSession();
-        
-        try{
+
+        try {
+
+            //2.insertresultにて直リンク防止用の処理が存在しない。insertからinsertconfirmへの流れを参考に修正しなさい
+            String accesschk = request.getParameter("ac");
+            if (accesschk == null || (Integer) session.getAttribute("ac") != Integer.parseInt(accesschk)) {
+                throw new Exception("不正なアクセスです");
+            }
+
             //ユーザー情報に対応したJavaBeansオブジェクトに格納していく
             UserDataDTO userdata = new UserDataDTO();
-            userdata.setName((String)session.getAttribute("name"));
+            userdata.setName((String) session.getAttribute("name"));
             Calendar birthday = Calendar.getInstance();
             userdata.setBirthday(birthday.getTime());
-            userdata.setType(Integer.parseInt((String)session.getAttribute("type")));
-            userdata.setTell((String)session.getAttribute("tell"));
-            userdata.setComment((String)session.getAttribute("comment"));
-            
+            userdata.setType(Integer.parseInt((String) session.getAttribute("type")));
+            userdata.setTell((String) session.getAttribute("tell"));
+            userdata.setComment((String) session.getAttribute("comment"));
+
             //DBへデータの挿入
-            UserDataDAO .getInstance().insert(userdata);
-            
+            UserDataDAO.getInstance().insert(userdata);
+
             request.getRequestDispatcher("/insertresult.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             //データ挿入に失敗したらエラーページにエラー文を渡して表示
             request.setAttribute("error", e.getMessage());
             request.getRequestDispatcher("/error.jsp").forward(request, response);

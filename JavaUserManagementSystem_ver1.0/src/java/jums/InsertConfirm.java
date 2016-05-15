@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * insertconfirm.jspと対応するサーブレット
- * フォーム入力された情報はここでセッションに格納し、以降持ちまわることになる
+ * insertconfirm.jspと対応するサーブレット フォーム入力された情報はここでセッションに格納し、以降持ちまわることになる
  * 直接アクセスした場合はerror.jspに振り分け
+ *
  * @author hayashi-s
  */
 public class InsertConfirm extends HttpServlet {
@@ -26,14 +26,14 @@ public class InsertConfirm extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
+        try {
             HttpSession session = request.getSession();
             request.setCharacterEncoding("UTF-8");//セッションに格納する文字コードをUTF-8に変更
             String accesschk = request.getParameter("ac");
-            if(accesschk ==null || (Integer)session.getAttribute("ac")!=Integer.parseInt(accesschk)){
+            if (accesschk == null || (Integer) session.getAttribute("ac") != Integer.parseInt(accesschk)) {
                 throw new Exception("不正なアクセスです");
             }
-            
+
             //フォームからの入力を取得
             String name = request.getParameter("name");
             String year = request.getParameter("year");
@@ -46,22 +46,45 @@ public class InsertConfirm extends HttpServlet {
             //セッションに格納
             session.setAttribute("name", name);
             session.setAttribute("year", year);
-            session.setAttribute("month",month);
+            session.setAttribute("month", month);
             session.setAttribute("day", day);
             session.setAttribute("type", type);
             session.setAttribute("tell", tell);
             session.setAttribute("comment", comment);
             System.out.println("Session updated!!");
-            
+
+            //3. insertconfirmにて、フォームの内容が未入力であっても通過してしまう場合がある。これを通過させないようにし、かつどの項目が不完全なのかをわかるようにしなさい
+            String no_value = "";
+            if (name.equals("")) {
+                no_value += "名前<br>";
+            }
+            if (year.equals("")) {
+                no_value += "年数<br>";
+            }
+            if (month.equals("")) {
+                no_value += "月数<br>";
+            }
+            if (day.equals("")) {
+                no_value += "日数<br>";
+            }
+            if (tell.equals("")) {
+                no_value += "電話番号<br>";
+            }
+            if (comment.equals("")) {
+                no_value += "自己紹介<br>";
+            }
+            if (no_value.length() != 0) {
+                throw new Exception(no_value + "未入力です");
+            }
             request.getRequestDispatcher("/insertconfirm.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             request.setAttribute("error", e.getMessage());
             request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
-            
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

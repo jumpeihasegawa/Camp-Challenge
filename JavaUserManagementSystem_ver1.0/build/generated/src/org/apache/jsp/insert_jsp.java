@@ -62,12 +62,43 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("        <form action=\"insertconfirm\" method=\"POST\">\n");
       out.write("            名前:\n");
+      out.write("            ");
+ if (hs.getAttribute("name") != null) { 
+      out.write("\n");
+      out.write("            <input type=\"text\" name=\"name\" value=\"");
+out.print(hs.getAttribute("name"));
+      out.write("\">\n");
+      out.write("            ");
+ } else { 
+      out.write("\n");
       out.write("            <input type=\"text\" name=\"name\" value=\"\">\n");
+      out.write("            ");
+ } 
+      out.write("\n");
       out.write("            <br><br>\n");
       out.write("\n");
       out.write("            生年月日:　\n");
       out.write("            <select name=\"year\">\n");
+      out.write("                ");
+ if (hs.getAttribute("year") == null) { 
+      out.write("\n");
       out.write("                <option value=\"\">----</option>\n");
+      out.write("                ");
+ } else if (hs.getAttribute("year") == "") { 
+      out.write("\n");
+      out.write("                <option value=\"\">----</option>\n");
+      out.write("                ");
+ } else {
+      out.write("\n");
+      out.write("                <option value=\"");
+out.print(hs.getAttribute("year"));
+      out.write('"');
+      out.write('>');
+out.print(hs.getAttribute("year"));
+      out.write("</option>\n");
+      out.write("                ");
+ } 
+      out.write("\n");
       out.write("                ");
 
                     for (int i = 1950; i <= 2010; i++) {
@@ -82,7 +113,26 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            </select>年\n");
       out.write("            <select name=\"month\">\n");
+      out.write("                ");
+ if (hs.getAttribute("month") == null) { 
+      out.write("\n");
       out.write("                <option value=\"\">--</option>\n");
+      out.write("                ");
+ } else if (hs.getAttribute("month") == "") { 
+      out.write("\n");
+      out.write("                <option value=\"\">--</option>\n");
+      out.write("                ");
+ } else { 
+      out.write("\n");
+      out.write("                <option value=\"");
+out.print(hs.getAttribute("month"));
+      out.write('"');
+      out.write('>');
+out.print(hs.getAttribute("month"));
+      out.write("</option>\n");
+      out.write("                ");
+ } 
+      out.write("\n");
       out.write("                ");
 
                     for (int i = 1; i <= 12; i++) {
@@ -98,7 +148,26 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            </select>月\n");
       out.write("            <select name=\"day\">\n");
+      out.write("                ");
+ if (hs.getAttribute("day") == null) { 
+      out.write("\n");
       out.write("                <option value=\"\">--</option>\n");
+      out.write("                ");
+ } else if (hs.getAttribute("day") == "") { 
+      out.write("\n");
+      out.write("                <option value=\"\">--</option>\n");
+      out.write("                ");
+ } else { 
+      out.write("\n");
+      out.write("                <option value=\"");
+out.print(hs.getAttribute("day"));
+      out.write('"');
+      out.write('>');
+out.print(hs.getAttribute("day"));
+      out.write("</option>\n");
+      out.write("                ");
+ } 
+      out.write("\n");
       out.write("                ");
 
                     for (int i = 1; i <= 31; i++) {
@@ -119,19 +188,62 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <br>\n");
       out.write("\n");
       out.write("            <!--value=\"1\"　checkedの間が全角のスペースになっており、半角スペースに変更した-->\n");
-      out.write("            <input type=\"radio\" name=\"type\" value=\"1\" checked>エンジニア<br>\n");
+      out.write("            ");
+ if (hs.getAttribute("type").equals("null") || hs.getAttribute("type").equals("1")) {
       out.write("\n");
+      out.write("            <input type=\"radio\" name=\"type\" value=\"1\" checked>エンジニア<br>\n");
       out.write("            <input type=\"radio\" name=\"type\" value=\"2\">営業<br>\n");
       out.write("            <input type=\"radio\" name=\"type\" value=\"3\">その他<br>\n");
+      out.write("            ");
+ } else if (hs.getAttribute("type") == "2") {
+      out.write("\n");
+      out.write("            <input type=\"radio\" name=\"type\" value=\"1\">エンジニア<br>\n");
+      out.write("            <input type=\"radio\" name=\"type\" value=\"2\" checked>営業<br>\n");
+      out.write("            <input type=\"radio\" name=\"type\" value=\"3\">その他<br>\n");
+      out.write("            ");
+ } else {
+      out.write("\n");
+      out.write("            <input type=\"radio\" name=\"type\" value=\"1\">エンジニア<br>\n");
+      out.write("            <input type=\"radio\" name=\"type\" value=\"2\">営業<br>\n");
+      out.write("            <input type=\"radio\" name=\"type\" value=\"3\" checked>その他<br>\n");
+      out.write("            ");
+ } 
+      out.write("\n");
+      out.write("            ");
+out.print(hs.getAttribute("type"));
+      out.write("\n");
       out.write("            <br>\n");
       out.write("\n");
       out.write("            電話番号:\n");
+      out.write("            ");
+ if (hs.getAttribute("tell") != null) { 
+      out.write("\n");
+      out.write("            <input type=\"text\" name=\"tell\" value=\"");
+out.print(hs.getAttribute("tell"));
+      out.write("\">\n");
+      out.write("            ");
+ } else { 
+      out.write("\n");
       out.write("            <input type=\"text\" name=\"tell\" value=\"\">\n");
+      out.write("            ");
+ } 
+      out.write("\n");
       out.write("            <br><br>\n");
       out.write("\n");
       out.write("            自己紹介文\n");
       out.write("            <br>\n");
-      out.write("            <textarea name=\"comment\" rows=10 cols=50 style=\"resize:none\" wrap=\"hard\"></textarea><br><br>\n");
+      out.write("            ");
+ if (hs.getAttribute("tell") != null) { 
+      out.write("\n");
+      out.write("            <textarea name=\"comment\" rows=10 cols=50 style=\"resize:none\" wrap=\"hard\" >");
+out.print(hs.getAttribute("comment"));
+      out.write("</textarea><br><br>\n");
+      out.write("            ");
+ } else { 
+      out.write("\n");
+      out.write("            <textarea name=\"comment\" rows=10 cols=50 style=\"resize:none\" wrap=\"hard\" ></textarea><br><br>\n");
+      out.write("            ");
+ }
       out.write("\n");
       out.write("            <input type=\"hidden\" name=\"ac\"  value=\"");
       out.print( hs.getAttribute("ac"));

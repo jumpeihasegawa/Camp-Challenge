@@ -60,8 +60,10 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        <title>JUMS登録確認画面</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("        <!--2.insertresultにて直リンク防止用の処理が存在しない。insertからinsertconfirmへの流れを参考に修正しなさい\n");
+      out.write("            直接アクセスしようとした場合、エラー文を表示したいが、エラーがおこる-->\n");
       out.write("        ");
- if (!hs.getAttribute("name").equals("")) {
+ if (hs.getAttribute("name") != null) {
       out.write("\n");
       out.write("        <h1>登録確認</h1>\n");
       out.write("        名前:");
@@ -86,7 +88,9 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        ");
  } else { 
       out.write("\n");
-      out.write("        <h1>入力が不完全です</h1>\n");
+      out.write("        <h1>入力が不完全です</h1>");
+out.print(request.getParameter("btnSubmit"));
+      out.write("\n");
       out.write("        ");
  }
       out.write("\n");

@@ -44,7 +44,9 @@ public final class insertresult_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
+      out.write("\n");
       out.write("<!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->\n");
+      out.write("\n");
       out.write("\n");
 
     HttpSession hs = request.getSession();
@@ -58,9 +60,11 @@ public final class insertresult_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("        <title>JUMS登録結果画面</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("        <!--2.insertresultにて直リンク防止用の処理が存在しない。insertからinsertconfirmへの流れを参考に修正しなさい-->\n");
       out.write("        ");
- if(!hs.getAttribute("name").equals("")){ 
+ if (hs.getAttribute("yes") == "はい") {
       out.write("\n");
+      out.write("        \n");
       out.write("        <h1>登録結果</h1><br>\n");
       out.write("        名前:");
       out.print( hs.getAttribute("name"));
@@ -79,11 +83,11 @@ public final class insertresult_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("<br>\n");
       out.write("        以上の内容で登録しました。<br>\n");
       out.write("        ");
- }else{ 
+ } else { 
       out.write("\n");
       out.write("        <h1>不正なアクセスです</h1>\n");
-      out.write("    ");
- } 
+      out.write("        ");
+ }
       out.write("\n");
       out.write("        <br>\n");
       out.write("        <!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->\n");
