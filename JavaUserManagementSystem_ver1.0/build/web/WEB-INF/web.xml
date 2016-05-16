@@ -24,9 +24,10 @@
         <servlet-name>insertresult</servlet-name>
         <url-pattern>/insertresult</url-pattern>
     </servlet-mapping>
+    <!--5.適切なタイミングでセッションがクリアになるようにしなさい-->
     <session-config>
         <session-timeout>
-            30
+            3
         </session-timeout>
     </session-config>
     

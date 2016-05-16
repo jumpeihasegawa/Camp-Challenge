@@ -31,9 +31,13 @@ public class InsertResult extends HttpServlet {
 
         //セッションスタート
         HttpSession session = request.getSession();
+        request.setCharacterEncoding("UTF-8");//セッションに格納する文字コードをUTF-8に変更
+
+        //insertresult.jspに直接アクセスをしよとしたときに使用するセッション
+        String yes = request.getParameter("yes");
+        session.setAttribute("yes", yes);
 
         try {
-
             //2.insertresultにて直リンク防止用の処理が存在しない。insertからinsertconfirmへの流れを参考に修正しなさい
             String accesschk = request.getParameter("ac");
             if (accesschk == null || (Integer) session.getAttribute("ac") != Integer.parseInt(accesschk)) {
@@ -43,8 +47,15 @@ public class InsertResult extends HttpServlet {
             //ユーザー情報に対応したJavaBeansオブジェクトに格納していく
             UserDataDTO userdata = new UserDataDTO();
             userdata.setName((String) session.getAttribute("name"));
+
+            //6.入力された生年月日の情報がDBに正しく格納されていない。これを修正しなさい
             Calendar birthday = Calendar.getInstance();
+            int year = Integer.parseInt((String) session.getAttribute("year"));
+            int month = Integer.parseInt((String) session.getAttribute("month"));
+            int day = Integer.parseInt((String) session.getAttribute("day"));
+            birthday.set(year, month, day);
             userdata.setBirthday(birthday.getTime());
+
             userdata.setType(Integer.parseInt((String) session.getAttribute("type")));
             userdata.setTell((String) session.getAttribute("tell"));
             userdata.setComment((String) session.getAttribute("comment"));

@@ -51,6 +51,11 @@ public class InsertConfirm extends HttpServlet {
             session.setAttribute("type", type);
             session.setAttribute("tell", tell);
             session.setAttribute("comment", comment);
+
+            //insertconfirm.jspに直接アクセスをしよとしたときに使用するセッション
+            String btnSubmit = request.getParameter("btnSubmit");
+            session.setAttribute("btnSubmit", btnSubmit);
+
             System.out.println("Session updated!!");
 
             //3. insertconfirmにて、フォームの内容が未入力であっても通過してしまう場合がある。これを通過させないようにし、かつどの項目が不完全なのかをわかるようにしなさい

@@ -15,7 +15,6 @@
     </head>
     <body>
         <form action="insertconfirm" method="POST">
-            
             <!--4.insertconfirmにて再度入力する際に、このままではフォームに値が保持されていない。適切な処理を施して、再度入力の際にはフォームに値を保持したままにさせなさい-->
             名前:
             <% if (hs.getAttribute("name") != null) { %>
@@ -29,8 +28,6 @@
             <select name="year">
                 <% if (hs.getAttribute("year") == null) { %>
                 <option value="">----</option>
-                <% } else if (hs.getAttribute("year") == "") { %>
-                <option value="">----</option>
                 <% } else {%>
                 <option value="<%out.print(hs.getAttribute("year"));%>"><%out.print(hs.getAttribute("year"));%></option>
                 <% } %>
@@ -42,8 +39,6 @@
             <select name="month">
                 <% if (hs.getAttribute("month") == null) { %>
                 <option value="">--</option>
-                <% } else if (hs.getAttribute("month") == "") { %>
-                <option value="">--</option>
                 <% } else { %>
                 <option value="<%out.print(hs.getAttribute("month"));%>"><%out.print(hs.getAttribute("month"));%></option>
                 <% } %>
@@ -54,8 +49,6 @@
             </select>月
             <select name="day">
                 <% if (hs.getAttribute("day") == null) { %>
-                <option value="">--</option>
-                <% } else if (hs.getAttribute("day") == "") { %>
                 <option value="">--</option>
                 <% } else { %>
                 <option value="<%out.print(hs.getAttribute("day"));%>"><%out.print(hs.getAttribute("day"));%></option>

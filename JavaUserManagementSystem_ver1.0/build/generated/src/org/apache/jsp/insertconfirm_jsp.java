@@ -60,10 +60,9 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        <title>JUMS登録確認画面</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <!--2.insertresultにて直リンク防止用の処理が存在しない。insertからinsertconfirmへの流れを参考に修正しなさい\n");
-      out.write("            直接アクセスしようとした場合、エラー文を表示したいが、エラーがおこる-->\n");
+      out.write("        <!--直リンクしたとき（登録をまだ行っていない状態）にエラー文を表示する機能を付けた-->\n");
       out.write("        ");
- if (hs.getAttribute("name") != null) {
+ if (hs.getAttribute("btnSubmit").equals("確認画面へ")) {
       out.write("\n");
       out.write("        <h1>登録確認</h1>\n");
       out.write("        名前:");
@@ -83,20 +82,21 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("<br>\n");
       out.write("        上記の内容で登録します。よろしいですか？\n");
       out.write("        <form action=\"insertresult\" method=\"POST\">\n");
+      out.write("            <input type=\"hidden\" name=\"ac\"  value=\"");
+      out.print( hs.getAttribute("ac"));
+      out.write("\">\n");
       out.write("            <input type=\"submit\" name=\"yes\" value=\"はい\">\n");
       out.write("        </form>\n");
-      out.write("        ");
- } else { 
-      out.write("\n");
-      out.write("        <h1>入力が不完全です</h1>");
-out.print(request.getParameter("btnSubmit"));
-      out.write("\n");
-      out.write("        ");
- }
-      out.write("\n");
       out.write("        <form action=\"insert\" method=\"POST\">\n");
       out.write("            <input type=\"submit\" name=\"no\" value=\"登録画面に戻る\">\n");
       out.write("        </form>\n");
+      out.write("        ");
+ } else {
+      out.write("\n");
+      out.write("        <h1>不正なアクセスです</h1>\n");
+      out.write("        ");
+ }
+      out.write("\n");
       out.write("        <br>\n");
       out.write("\n");
       out.write("        <!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->\n");
