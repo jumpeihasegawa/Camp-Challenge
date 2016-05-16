@@ -34,23 +34,20 @@ public class InsertConfirm extends HttpServlet {
                 throw new Exception("不正なアクセスです");
             }
 
+            //7.フォームから受け取ったデータ自体を格納できるJavaBeansを作成し、これを利用して表示や分岐などをさせなさい(UserDataDTO.javaはデータベースのカラムに対応したJavaBeansなので微妙に違うものです)
+            //4.insertconfirmにて再度入力する際に、このままではフォームに値が保持されていない。適切な処理を施して、再度入力の際にはフォームに値を保持したままにさせなさい
             //フォームからの入力を取得
-            String name = request.getParameter("name");
-            String year = request.getParameter("year");
-            String month = request.getParameter("month");
-            String day = request.getParameter("day");
-            String type = request.getParameter("type");
-            String tell = request.getParameter("tell");
-            String comment = request.getParameter("comment");
-
+            UserDataForm userform = new UserDataForm();
+            userform.setName(request.getParameter("name"));
+            userform.setYear(request.getParameter("year"));
+            userform.setMonth(request.getParameter("month"));
+            userform.setDay(request.getParameter("day"));
+            userform.setType(request.getParameter("type"));
+            userform.setTell(request.getParameter("tell"));
+            userform.setComment(request.getParameter("comment"));
+            
             //セッションに格納
-            session.setAttribute("name", name);
-            session.setAttribute("year", year);
-            session.setAttribute("month", month);
-            session.setAttribute("day", day);
-            session.setAttribute("type", type);
-            session.setAttribute("tell", tell);
-            session.setAttribute("comment", comment);
+            session.setAttribute("userform", userform);
 
             //insertconfirm.jspに直接アクセスをしよとしたときに使用するセッション
             String btnSubmit = request.getParameter("btnSubmit");
@@ -60,22 +57,22 @@ public class InsertConfirm extends HttpServlet {
 
             //3. insertconfirmにて、フォームの内容が未入力であっても通過してしまう場合がある。これを通過させないようにし、かつどの項目が不完全なのかをわかるようにしなさい
             String no_value = "";
-            if (name.equals("")) {
+            if (userform.getName().equals("")) {
                 no_value += "名前<br>";
             }
-            if (year.equals("")) {
+            if (userform.getYear().equals("")) {
                 no_value += "年数<br>";
             }
-            if (month.equals("")) {
+            if (userform.getMonth().equals("")) {
                 no_value += "月数<br>";
             }
-            if (day.equals("")) {
+            if (userform.getDay().equals("")) {
                 no_value += "日数<br>";
             }
-            if (tell.equals("")) {
+            if (userform.getTell().equals("")) {
                 no_value += "電話番号<br>";
             }
-            if (comment.equals("")) {
+            if (userform.getComment().equals("")) {
                 no_value += "自己紹介<br>";
             }
             if (no_value.length() != 0) {

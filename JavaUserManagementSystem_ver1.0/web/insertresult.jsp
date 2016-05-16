@@ -2,6 +2,8 @@
 
 <!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->
 <%@page import="jums.JumsHelper"%>
+<!--7.フォームから受け取ったデータ自体を格納できるJavaBeansを作成し、これを利用して表示や分岐などをさせなさい(UserDataDTO.javaはデータベースのカラムに対応したJavaBeansなので微妙に違うものです)-->
+<%@page import="jums.UserDataForm"%>
 
 <%
     HttpSession hs = request.getSession();
@@ -14,18 +16,19 @@
         <title>JUMS登録結果画面</title>
     </head>
     <body>
+        <!--7.フォームから受け取ったデータ自体を格納できるJavaBeansを作成し、これを利用して表示や分岐などをさせなさい(UserDataDTO.javaはデータベースのカラムに対応したJavaBeansなので微妙に違うものです)-->
+        <% UserDataForm userform = (UserDataForm) hs.getAttribute("userform"); %>
         <!--直リンクしたとき（確認をまだ行っていない状態）にエラー文を表示する機能を付けた-->
         <% if (hs.getAttribute("yes").equals("はい")) {%>
-
         <h1>登録結果</h1><br>
-        名前:<%= hs.getAttribute("name")%><br>
-        生年月日:<%= hs.getAttribute("year") + "年" + hs.getAttribute("month") + "月" + hs.getAttribute("day") + "日"%><br>
-        種別:<%= hs.getAttribute("type")%><br>
-        電話番号:<%= hs.getAttribute("tell")%><br>
-        自己紹介:<%= hs.getAttribute("comment")%><br>
+        名前:<%= userform.getName()%><br>
+        生年月日:<%= userform.getYear() + "年" + userform.getMonth() + "月" + userform.getDay() + "日"%><br>
+        種別:<%= userform.getType()%><br>
+        電話番号:<%= userform.getTell()%><br>
+        自己紹介:<%= userform.getComment()%><br>
         以上の内容で登録しました。<br>
         <% } else { %>
-        <h1>不正なアクセスです<%out.print(hs.getAttribute("yes")); %></h1>
+        <h1>不正なアクセスです</h1>
         <% }%>
         <br>
         <!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->

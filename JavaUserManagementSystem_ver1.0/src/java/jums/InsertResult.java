@@ -1,7 +1,6 @@
 package jums;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,9 +30,9 @@ public class InsertResult extends HttpServlet {
 
         //セッションスタート
         HttpSession session = request.getSession();
-        request.setCharacterEncoding("UTF-8");//セッションに格納する文字コードをUTF-8に変更
 
         //insertresult.jspに直接アクセスをしよとしたときに使用するセッション
+        request.setCharacterEncoding("UTF-8");//セッションに格納する文字コードをUTF-8に変更
         String yes = request.getParameter("yes");
         session.setAttribute("yes", yes);
 
@@ -44,21 +43,24 @@ public class InsertResult extends HttpServlet {
                 throw new Exception("不正なアクセスです");
             }
 
+            //7.フォームから受け取ったデータ自体を格納できるJavaBeansを作成し、これを利用して表示や分岐などをさせなさい(UserDataDTO.javaはデータベースのカラムに対応したJavaBeansなので微妙に違うものです)
+            UserDataForm userform = (UserDataForm) session.getAttribute("userform");
+
             //ユーザー情報に対応したJavaBeansオブジェクトに格納していく
             UserDataDTO userdata = new UserDataDTO();
-            userdata.setName((String) session.getAttribute("name"));
+            userdata.setName(userform.getName());
 
             //6.入力された生年月日の情報がDBに正しく格納されていない。これを修正しなさい
             Calendar birthday = Calendar.getInstance();
-            int year = Integer.parseInt((String) session.getAttribute("year"));
-            int month = Integer.parseInt((String) session.getAttribute("month"));
-            int day = Integer.parseInt((String) session.getAttribute("day"));
+            int year = Integer.parseInt(userform.getYear());
+            int month = Integer.parseInt(userform.getMonth());
+            int day = Integer.parseInt(userform.getDay());
             birthday.set(year, month, day);
             userdata.setBirthday(birthday.getTime());
 
-            userdata.setType(Integer.parseInt((String) session.getAttribute("type")));
-            userdata.setTell((String) session.getAttribute("tell"));
-            userdata.setComment((String) session.getAttribute("comment"));
+            userdata.setType(Integer.parseInt(userform.getType()));
+            userdata.setTell(userform.getTell());
+            userdata.setComment(userform.getComment());
 
             //DBへデータの挿入
             UserDataDAO.getInstance().insert(userdata);

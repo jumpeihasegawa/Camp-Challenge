@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import javax.servlet.http.HttpSession;
 import jums.JumsHelper;
+import jums.UserDataForm;
 
 public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -47,6 +48,8 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\n");
       out.write("<!--1.JumsHelperクラスを利用して、全部のページにトップへのリンクが表示されるようにしなさい-->\n");
       out.write("\n");
+      out.write("<!--7.フォームから受け取ったデータ自体を格納できるJavaBeansを作成し、これを利用して表示や分岐などをさせなさい(UserDataDTO.javaはデータベースのカラムに対応したJavaBeansなので微妙に違うものです)-->\n");
+      out.write("\n");
       out.write("\n");
 
     HttpSession hs = request.getSession();
@@ -60,28 +63,33 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        <title>JUMS登録確認画面</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("        <!--7.フォームから受け取ったデータ自体を格納できるJavaBeansを作成し、これを利用して表示や分岐などをさせなさい(UserDataDTO.javaはデータベースのカラムに対応したJavaBeansなので微妙に違うものです)-->\n");
+      out.write("        ");
+ UserDataForm userform = (UserDataForm)hs.getAttribute("userform"); 
+      out.write("\n");
       out.write("        <!--直リンクしたとき（登録をまだ行っていない状態）にエラー文を表示する機能を付けた-->\n");
       out.write("        ");
  if (hs.getAttribute("btnSubmit").equals("確認画面へ")) {
       out.write("\n");
       out.write("        <h1>登録確認</h1>\n");
       out.write("        名前:");
-      out.print( hs.getAttribute("name"));
+      out.print( userform.getName() );
       out.write("<br>\n");
       out.write("        生年月日:");
-      out.print( hs.getAttribute("year") + "年" + hs.getAttribute("month") + "月" + hs.getAttribute("day") + "日");
+      out.print( userform.getYear() + "年" + userform.getMonth() + "月" + userform.getDay() + "日");
       out.write("<br>\n");
       out.write("        種別:");
-      out.print( hs.getAttribute("type"));
+      out.print( userform.getType() );
       out.write("<br>\n");
       out.write("        電話番号:");
-      out.print( hs.getAttribute("tell"));
+      out.print( userform.getTell() );
       out.write("<br>\n");
       out.write("        自己紹介:");
-      out.print( hs.getAttribute("comment"));
+      out.print( userform.getComment() );
       out.write("<br>\n");
       out.write("        上記の内容で登録します。よろしいですか？\n");
       out.write("        <form action=\"insertresult\" method=\"POST\">\n");
+      out.write("            <!--2.insertresultにて直リンク防止用の処理が存在しない。insertからinsertconfirmへの流れを参考に修正しなさい-->\n");
       out.write("            <input type=\"hidden\" name=\"ac\"  value=\"");
       out.print( hs.getAttribute("ac"));
       out.write("\">\n");
