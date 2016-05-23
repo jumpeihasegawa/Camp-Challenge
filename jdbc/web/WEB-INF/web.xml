@@ -48,6 +48,22 @@
         <servlet-name>Kadai12Servlet</servlet-name>
         <servlet-class>org.camp.sample.Kadai12Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Ouyou_TebleServlet</servlet-name>
+        <servlet-class>org.camp.sample.Ouyou_TebleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Ouyou_loginServlet</servlet-name>
+        <servlet-class>org.camp.sample.Ouyou_loginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Ouyou_itemServlet</servlet-name>
+        <servlet-class>org.camp.sample.Ouyou_itemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Ouyou_itemLogServlet</servlet-name>
+        <servlet-class>org.camp.sample.Ouyou_itemLogServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Kadai1Servlet</servlet-name>
         <url-pattern>/Kadai1Servlet</url-pattern>
@@ -95,6 +111,22 @@
     <servlet-mapping>
         <servlet-name>Kadai12Servlet</servlet-name>
         <url-pattern>/Kadai12Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ouyou_TebleServlet</servlet-name>
+        <url-pattern>/Ouyou_TebleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ouyou_loginServlet</servlet-name>
+        <url-pattern>/Ouyou_loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ouyou_itemServlet</servlet-name>
+        <url-pattern>/Ouyou_itemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ouyou_itemLogServlet</servlet-name>
+        <url-pattern>/Ouyou_itemLogServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class Kadai12_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class Ouyou_0020login_0020logout_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,6 +44,14 @@ public final class Kadai12_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+
+        HttpSession hs = request.getSession();
+        String no_ID = "";
+        if (hs.getAttribute("no_ID") != null) {
+            no_ID = hs.getAttribute("no_ID").toString();
+        }
+
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -51,30 +59,14 @@ public final class Kadai12_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <form action=\"/Kadai12Servlet\" method=\"post\">\n");
-      out.write("            名前：<input type=\"text\" name=\"name\" >\n");
-      out.write("            年齢：<input type=\"number\" name=\"age\" >\n");
-      out.write("            誕生日：<input type=\"date\" name=\"birthday\" >            \n");
-      out.write("            <input type=\"submit\" value=\"検索\">\n");
+      out.write("        <h1>名前とパスワードを入力してください</h1>\n");
+      out.write("        <br>\n");
+      out.write("        <br>\n");
+      out.write("        <form action=\"Ouyou_loginServlet\" method=\"post\">\n");
+      out.write("            名前：<input type=\"text\" name=\"name\" required>\n");
+      out.write("            パスワード：<input type=\"password\" name=\"password\" required>\n");
+      out.write("            <input type=\"submit\" value=\"ログイン\">\n");
       out.write("        </form>\n");
-      out.write("        <br>\n");
-      out.write("        検索結果\n");
-      out.write("        <br>\n");
-      out.write("        ");
-
-            HttpSession hs = request.getSession(true);
-            if (hs.getAttribute("ID") != null) {
-                String ID = hs.getAttribute("ID").toString();
-                int I = Integer.parseInt(ID);
-                for (int i = 1; i <= I; i++) {
-                    Object name = hs.getAttribute("name" + i);
-                    Object age = hs.getAttribute("age" + i);
-                    Object birthday = hs.getAttribute("birthday" + i);
-                    out.print(" 名前 " + name + " 年齢 " + age + " 誕生日 " + birthday + "<br>");
-                }
-            }
-        
-      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
